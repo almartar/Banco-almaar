@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Banco-almaar</string>
+    <string name="iniciar_sesion">Iniciar sesión</string>
+    <string name="introduce_la_contrasena">Introduce la contraseña</string>
+    <string name="introduce_dni">Introduce el DNI</string>
+    <string name="entrar">Entrar</string>
+    <string name="salir">Salir</string>
+    <string name="error_dni_requerido">El DNI es obligatorio</string>
+    <string name="error_contrasena_requerida">La contraseña es obligatoria</string>
+    <string name="bienvenido_con_dni">Bienvenido/a, %1$s</string>
+    <string name="bienvenido">Bienvenido/a</string>
+</resources>
