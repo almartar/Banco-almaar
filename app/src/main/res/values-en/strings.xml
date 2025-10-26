@@ -1,0 +1,29 @@
+<resources>
+    <string name="app_name">Banco-almaar</string>
+    <string name="iniciar_sesion">Sign in</string>
+    <string name="introduce_la_contrasena">Enter password</string>
+    <string name="introduce_dni">Enter ID</string>
+    <string name="entrar">Enter</string>
+    <string name="salir">Exit</string>
+    <string name="error_dni_requerido">ID is required</string>
+    <string name="error_contrasena_requerida">Password is required</string>
+    <string name="bienvenido_con_dni">Welcome, %1$s</string>
+    <string name="bienvenido">Welcome</string>
+    <string name="bienvenido_banco">Welcome to my bank</string>
+    <string name="posicion_global">Global position</string>
+    <string name="movimientos">Transactions</string>
+    <string name="transferencias">Transfers</string>
+    <string name="cambiar_contrasena">Change password</string>
+    <string name="promociones">Promotions</string>
+    <string name="cajeros">ATMs</string>
+    <string name="contrasena_actual">Current password</string>
+    <string name="nueva_contrasena">New password</string>
+    <string name="repite_contrasena">Repeat password</string>
+    <string name="aceptar">OK</string>
+    <string name="cancelar">Cancel</string>
+    <string name="error_contrasena_no_coincide">Passwords do not match</string>
+    <string name="clave_cambiada_mock">Password changed (mock)</string>
+    <string name="funcionalidad_pendiente">Feature pending</string>
+    <string name="obligatorio">Required</string>
+</resources>
+
