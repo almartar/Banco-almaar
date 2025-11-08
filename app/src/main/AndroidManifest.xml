@@ -39,6 +39,9 @@
         <activity
             android:name=".MovementsActivity"
             android:exported="false" />
+        <activity
+            android:name=".TransferActivity"
+            android:exported="false" />
     </application>
 
 </manifest>

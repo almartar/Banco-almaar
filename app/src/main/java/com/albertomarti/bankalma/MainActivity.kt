@@ -40,7 +40,16 @@ class MainActivity : AppCompatActivity() {
             startActivity(i)
         }
         binding.btnMovimientos.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
-        binding.btnTransferencias.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
+        binding.btnTransferencias.setOnClickListener {
+            Toast.makeText(this, "Abriendo Transferencias…", Toast.LENGTH_SHORT).show()
+            try {
+                val it = Intent(this, TransferActivity::class.java)
+                if (cliente != null) it.putExtra("EXTRA_CLIENTE", cliente) // Pasamos el cliente para cargar sus cuentas
+                startActivity(it)
+            } catch (e: Exception) {
+                Toast.makeText(this, "Error al abrir: ${e.message}", Toast.LENGTH_LONG).show()
+            }
+        }
         binding.btnPromociones.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
         binding.btnCajeros.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
     }

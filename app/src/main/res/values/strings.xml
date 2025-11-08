@@ -29,4 +29,19 @@
     <string name="selecciona_cuenta">Selecciona la cuenta:</string>
     <string name="ultimos_movimientos">Últimos movimientos:</string>
     <string name="importe_label">Importe:</string>
+    <!-- Transferencia -->
+    <string name="elige_tu_cuenta">Elige tu cuenta:</string>
+    <string name="cuenta_propia">Cuenta propia</string>
+    <string name="cuenta_ajena">Cuenta ajena</string>
+    <string name="introduce_cuenta_ajena">Escribe el núm. cuenta ajena</string>
+    <string name="cantidad">Cantidad:</string>
+    <string name="enviar">Enviar</string>
+    <string name="enviar_justificante">Enviar justificante</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="cuenta_origen">Cuenta origen</string>
+    <string name="cuenta_destino">Cuenta destino</string>
+    <string name="error_origen_requerido">Selecciona cuenta de origen</string>
+    <string name="error_destino_requerido">Introduce cuenta de destino</string>
+    <string name="error_importe_requerido">Introduce un importe</string>
 </resources>
