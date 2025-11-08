@@ -13,10 +13,14 @@
         android:theme="@style/Theme.BankAlMa"
         tools:targetApi="31">
         <activity
+            android:name=".GlobalPositionActivity"
+            android:exported="false" />
+        <activity
             android:name=".WelcomeActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -28,6 +32,12 @@
             android:exported="false" />
         <activity
             android:name=".ChangePasswordActivity"
+            android:exported="false" />
+        <activity
+            android:name=".GlobalPositionActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MovementsActivity"
             android:exported="false" />
     </application>
 

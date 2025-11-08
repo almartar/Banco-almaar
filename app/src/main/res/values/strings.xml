@@ -25,4 +25,8 @@
     <string name="clave_cambiada_mock">Clave cambiada (simulado)</string>
     <string name="funcionalidad_pendiente">Funcionalidad pendiente</string>
     <string name="obligatorio">Obligatorio</string>
+    <string name="cuentas">Cuentas:</string>
+    <string name="selecciona_cuenta">Selecciona la cuenta:</string>
+    <string name="ultimos_movimientos">Últimos movimientos:</string>
+    <string name="importe_label">Importe:</string>
 </resources>
