@@ -18,7 +18,7 @@ import java.util.Locale
 /**
  * Muestra los movimientos de la cuenta seleccionada.
  * Usa Spinner para elegir cuenta y RecyclerView para listar movimientos.
- * Todo síncrono y sin hilos/corutinas/lambdas avanzadas.
+ *
  */
 class MovementsActivity : AppCompatActivity() {
 
@@ -66,11 +66,11 @@ class MovementsActivity : AppCompatActivity() {
         movimientosAdapter = MovimientosAdapter(movimientos) // Adaptador del RecyclerView
         binding.rvMovimientos.adapter = movimientosAdapter // Asignamos al RecyclerView
 
-        // Listener del Spinner basado en interface (sin lambdas)
+        // Listener del Spinner basado en interface
         binding.spCuentas.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onItemSelected(parent: AdapterView<*>?, view: android.view.View?, position: Int, id: Long) {
                 val cuenta = cuentas[position] // Cuenta seleccionada
-                @Suppress("UNCHECKED_CAST")
+
                 val nuevos = (api?.getMovimientos(cuenta) as? ArrayList<Movimiento>) ?: arrayListOf() // Consulta síncrona
                 movimientosAdapter.swap(nuevos) // Reemplaza la lista en el adaptador
             }
@@ -81,12 +81,12 @@ class MovementsActivity : AppCompatActivity() {
     }
 
     /**
-     * Adaptador del RecyclerView de movimientos con comentarios línea a línea.
+     * Adaptador del RecyclerView de movimientos
      */
     class MovimientosAdapter(private var data: List<Movimiento>) :
         androidx.recyclerview.widget.RecyclerView.Adapter<MovementsActivity.MovimientosAdapter.MovVH>() {
 
-        // Patrón de la profesora: ViewHolder(view) + ItemMovimientoBinding.bind(view)
+        //
         inner class MovVH(view: android.view.View) :
             androidx.recyclerview.widget.RecyclerView.ViewHolder(view) {
             val binding: ItemMovimientoBinding = ItemMovimientoBinding.bind(view)

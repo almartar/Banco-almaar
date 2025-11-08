@@ -29,5 +29,20 @@
     <string name="selecciona_cuenta">Select account:</string>
     <string name="ultimos_movimientos">Latest movements:</string>
     <string name="importe_label">Amount:</string>
+    <!-- Transfer -->
+    <string name="elige_tu_cuenta">Choose your account:</string>
+    <string name="cuenta_propia">Own account</string>
+    <string name="cuenta_ajena">Other account</string>
+    <string name="introduce_cuenta_ajena">Enter other account number</string>
+    <string name="cantidad">Amount:</string>
+    <string name="enviar">Send</string>
+    <string name="enviar_justificante">Send receipt</string>
+    <string name="si">Yes</string>
+    <string name="no">No</string>
+    <string name="cuenta_origen">Source account</string>
+    <string name="cuenta_destino">Destination account</string>
+    <string name="error_origen_requerido">Select source account</string>
+    <string name="error_destino_requerido">Enter destination account</string>
+    <string name="error_importe_requerido">Enter an amount</string>
 </resources>
 
