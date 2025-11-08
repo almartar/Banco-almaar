@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="2dp"
+    app:cardBackgroundColor="@android:color/white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp">
+
+        <!-- Icono del banco -->
+        <ImageView
+            android:id="@+id/ivIconoCuenta"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_bank"
+            android:contentDescription="cuenta"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="@color/black"/>
+
+        <!-- Número de cuenta -->
+        <TextView
+            android:id="@+id/tvNumeroCuenta"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:textColor="@color/black"
+            android:textSize="14sp"
+            android:textStyle="normal"
+            tools:text="1001-1001-11-1000000001"
+            app:layout_constraintStart_toEndOf="@id/ivIconoCuenta"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/tvSaldo"/>
+
+        <!-- Saldo (con color dinámico) -->
+        <TextView
+            android:id="@+id/tvSaldo"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            tools:text="+500.0"
+            tools:textColor="#4CAF50"
+            app:layout_constraintStart_toEndOf="@id/ivIconoCuenta"
+            app:layout_constraintTop_toBottomOf="@id/tvNumeroCuenta"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>

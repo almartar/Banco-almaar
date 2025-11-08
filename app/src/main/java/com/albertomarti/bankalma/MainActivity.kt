@@ -6,6 +6,7 @@ import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.albertomarti.bankalma.databinding.ActivityMainBinding
+import com.example.bancoapiprofe.pojo.Cliente
 
 class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
@@ -15,7 +16,9 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val dni = intent.getStringExtra("EXTRA_DNI").orEmpty()
+        // Obtenemos el cliente autenticado (si venimos del login nuevo)
+        val cliente = intent.getSerializableExtra("EXTRA_CLIENTE") as? Cliente
+        val dni = cliente?.getNif().orEmpty()
         binding.tvWelcomeTitle.text = getString(R.string.bienvenido)
         binding.tvWelcomeDni.text = dni
 
@@ -31,7 +34,11 @@ class MainActivity : AppCompatActivity() {
         }
 
         val toastMsg = getString(R.string.funcionalidad_pendiente)
-        binding.btnPosicionGlobal.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
+        binding.btnPosicionGlobal.setOnClickListener {
+            val i = Intent(this, GlobalPositionActivity::class.java)
+            if (cliente != null) i.putExtra("EXTRA_CLIENTE", cliente)
+            startActivity(i)
+        }
         binding.btnMovimientos.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
         binding.btnTransferencias.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }
         binding.btnPromociones.setOnClickListener { Toast.makeText(this, toastMsg, Toast.LENGTH_SHORT).show() }

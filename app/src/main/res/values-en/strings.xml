@@ -25,5 +25,9 @@
     <string name="clave_cambiada_mock">Password changed (mock)</string>
     <string name="funcionalidad_pendiente">Feature pending</string>
     <string name="obligatorio">Required</string>
+    <string name="cuentas">Accounts:</string>
+    <string name="selecciona_cuenta">Select account:</string>
+    <string name="ultimos_movimientos">Latest movements:</string>
+    <string name="importe_label">Amount:</string>
 </resources>
 
