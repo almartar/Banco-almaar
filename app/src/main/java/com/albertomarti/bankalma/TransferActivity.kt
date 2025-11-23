@@ -5,7 +5,8 @@ import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.CompoundButton
 import android.widget.Toast
-import androidx.activity.enableEdgeToEdge
+import android.view.LayoutInflater
+import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.albertomarti.bankalma.databinding.ActivityTransferBinding
 // API de la profesora (usamos sus paquetes originales)
@@ -31,10 +32,9 @@ class TransferActivity : AppCompatActivity() {
     private var cuentasApi: ArrayList<Cuenta> = arrayListOf()
 
     override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState) // Inicializa ciclo de vida
-        enableEdgeToEdge() // Ajustes de insets
-        binding = ActivityTransferBinding.inflate(layoutInflater) // Infla el layout y crea el binding
-        setContentView(binding.root) // Establece el contenido
+        super.onCreate(savedInstanceState)
+        binding = ActivityTransferBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         // 1) Recuperamos el cliente que viene desde Main/Login (puede ser null)
         val cliente = intent.getSerializableExtra("EXTRA_CLIENTE") as? Cliente
@@ -117,14 +117,29 @@ class TransferActivity : AppCompatActivity() {
                     return
                 }
 
-                // Resumen por Toast (simulado, sin persistencia)
-                val resumen = (
-                    getString(R.string.cuenta_origen) + ":\n" + origen + "\n" +
-                    getString(R.string.cuenta_destino) + ":\n" + destino + "\n" +
-                    getString(R.string.importe_label) + " " + importe + " " + divisa + "\n" +
-                    getString(R.string.enviar_justificante) + ": " + justificante
-                )
-                Toast.makeText(this@TransferActivity, resumen, Toast.LENGTH_LONG).show()
+                // Etiqueta dinámica para el destino (propia/ajena) como en el enunciado
+                val etiquetaDestino = if (binding.rbPropia.isChecked)
+                    "A ${getString(R.string.cuenta_propia)}"
+                else
+                    "A ${getString(R.string.cuenta_ajena)}"
+
+                val resumen = StringBuilder()
+                    .append(getString(R.string.cuenta_origen)).append(":\n").append(origen).append("\n")
+                    .append(etiquetaDestino).append(":\n").append(destino).append("\n")
+                    .append(getString(R.string.importe_label)).append(" ").append(importe).append(" ").append(divisa).append("\n")
+                    .append(getString(R.string.enviar_justificante)).append(": ").append(justificante)
+                    .toString()
+
+                // Toast personalizado con tarjeta para que se parezca al mock
+                val toastView = LayoutInflater.from(this@TransferActivity)
+                    .inflate(R.layout.toast_transfer_result, null)
+                val tv = toastView.findViewById<TextView>(R.id.tvToastText)
+                tv.text = resumen
+                Toast(this@TransferActivity).apply {
+                    duration = Toast.LENGTH_LONG
+                    view = toastView
+                    show()
+                }
             }
         })
 

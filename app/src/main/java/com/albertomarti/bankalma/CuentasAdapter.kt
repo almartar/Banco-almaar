@@ -14,7 +14,7 @@ import com.albertomarti.bankalma.R
  */
 class CuentasAdapter(
     private val cuentas: List<Cuenta>, // Lista de cuentas a mostrar
-    private val listener: OnCuentaClickListener // llamamos a la interface
+    private val listener: OnCuentaClickListener? = null // clic opcional
 ) : RecyclerView.Adapter<CuentasAdapter.CuentaVH>() {
 
     private lateinit var context: Context // Contexto para inflar vistas
@@ -37,8 +37,12 @@ class CuentasAdapter(
         val numero = "${cuenta.getBanco()}-${cuenta.getSucursal()}-${cuenta.getDc()}-${cuenta.getNumeroCuenta()}"
         with(holder) {
             binding.tvNumeroCuenta.text = numero
-            binding.tvSaldo.text = String.format("%.2f", cuenta.getSaldoActual())
-            binding.root.setOnClickListener { listener.onCuentaClick(cuenta) } // Interface de click
+            val saldo = cuenta.getSaldoActual() ?: 0f
+            binding.tvSaldo.text = String.format("%.2f", saldo)
+            val color = if (saldo >= 0f) android.graphics.Color.parseColor("#2E7D32")
+                        else android.graphics.Color.parseColor("#C62828")
+            binding.tvSaldo.setTextColor(color)
+            binding.root.setOnClickListener { listener?.onCuentaClick(cuenta) } // opcional
         }
     }
 

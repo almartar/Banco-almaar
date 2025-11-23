@@ -2,7 +2,6 @@ package com.albertomarti.bankalma
 
 import android.os.Bundle
 import android.content.Intent
-import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
 import com.albertomarti.bankalma.databinding.ActivityLoginBinding
 // Importamos las clases de la API de la profe
@@ -14,7 +13,6 @@ class LoginActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        enableEdgeToEdge()
 
         binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
@@ -41,25 +39,22 @@ class LoginActivity : AppCompatActivity() {
 
             if (!isValid) return@setOnClickListener
 
-            // Login real contra la API local (síncrono, sin hilos/corutinas)
-            val api = MiBancoOperacional.getInstance(this) // Obtiene la fachada de acceso a BD
-            val c = Cliente().apply { // Construye un Cliente parcial con nif y clave
+            val api = MiBancoOperacional.getInstance(this)
+            val c = Cliente().apply {
                 setNif(dni)
                 setClaveSeguridad(password)
             }
-            val logged = api?.login(c) // Intenta autenticar; devuelve Cliente completo o null
+            val logged = api?.login(c)
             if (logged == null) {
-                // Si las credenciales no son válidas, mostramos un error simple en usuario
                 binding.tilUser.error = getString(R.string.error_dni_requerido)
                 return@setOnClickListener
             }
 
-            // Si OK, pasamos el Cliente completo a la siguiente pantalla
             val intent = Intent(this, MainActivity::class.java).apply {
-                putExtra("EXTRA_CLIENTE", logged) // Cliente es Serializable
+                putExtra("EXTRA_CLIENTE", logged)
             }
-            startActivity(intent) // Navega a la pantalla principal
-            finish() // Cierra el login para no volver con “Atrás”
+            startActivity(intent)
+            finish()
         }
 
         binding.btnSalir.setOnClickListener {
